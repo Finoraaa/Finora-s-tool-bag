@@ -1,6 +1,6 @@
 # 🎒 Finora'nın Sırt Çantası (Finora's Tool Bag)
 
-![Finora's Tool Bag Banner](https://picsum.photos/seed/finora/1200/400)
+![Finora's Tool Bag Banner]
 
 **Finora'nın Sırt Çantası**, geliştiriciler, tasarımcılar ve dijital içerik üreticileri için tasarlanmış, modern, hızlı ve tamamen tarayıcı tabanlı bir dijital araç kitidir. Tüm işlemler yerel olarak tarayıcınızda gerçekleşir, verileriniz asla sunucularımıza gönderilmez.
 
