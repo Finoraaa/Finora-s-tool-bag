@@ -2,7 +2,7 @@
 
 **Finora'nın Sırt Çantası**, geliştiriciler, tasarımcılar ve dijital içerik üreticileri için tasarlanmış, modern, hızlı ve tamamen tarayıcı tabanlı bir dijital araç kitidir. Tüm işlemler yerel olarak tarayıcınızda gerçekleşir, verileriniz asla sunucularımıza gönderilmez.
 
-[Canlı Demoyu Görüntüle]((https://finora-s-tool-bag.vercel.app/))
+[Canlı Demoyu Görüntüle](https://finora-s-tool-bag.vercel.app/)
 
 ---
 
