@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-finora-accent: #00FF00;
+  --color-finora-bg: #0A0A0A;
+  --color-finora-card: #141414;
+  --color-finora-border: #262626;
+}
+
+@layer base {
+  body {
+    @apply bg-finora-bg text-white font-sans antialiased;
+  }
+}
+
+.glass-panel {
+  @apply bg-finora-card/80 backdrop-blur-md border border-finora-border rounded-2xl;
+}
+
+.neon-glow {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.neon-text {
+  @apply text-finora-accent;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-finora-border rounded-full hover:bg-neutral-700 transition-colors;
+}
