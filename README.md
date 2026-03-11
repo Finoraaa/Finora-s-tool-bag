@@ -1,6 +1,5 @@
 # 🎒 Finora'nın Sırt Çantası (Finora's Tool Bag)
 
-<<<<<<< HEAD
 ![Finora's Tool Bag Banner](https://picsum.photos/seed/finora/1200/400)
 
 **Finora'nın Sırt Çantası**, geliştiriciler, tasarımcılar ve dijital içerik üreticileri için tasarlanmış, modern, hızlı ve tamamen tarayıcı tabanlı bir dijital araç kitidir. Tüm işlemler yerel olarak tarayıcınızda gerçekleşir, verileriniz asla sunucularımıza gönderilmez.
@@ -22,27 +21,6 @@ Finora'nın sırt çantasında şu anda şu araçlar bulunmaktadır:
 - 📦 **JSON Model Dönüştürücü:** JSON verilerini TypeScript, Go veya Java sınıflarına dönüştürün.
 - ⌨️ **ASCII Sanatı Oluşturucu:** Metin ve görsellerinizi nostaljik ASCII karakterlerine dönüştürün.
 
-=======
-**Finora'nın Sırt Çantası**, geliştiriciler, tasarımcılar ve dijital içerik üreticileri için tasarlanmış, modern, hızlı ve tamamen tarayıcı tabanlı bir dijital araç kitidir. Tüm işlemler yerel olarak tarayıcınızda gerçekleşir, verileriniz asla sunucularımıza gönderilmez.
-
-[Canlı Demoyu Görüntüle](https://finora-s-tool-bag.vercel.app/)
-
----
-
-## ✨ Özellikler
-
-Finora'nın sırt çantasında şu anda şu araçlar bulunmaktadır:
-
-- 🖼️ **Görsel Analiz & Format:** Görselleri analiz edin, boyutlarını görün ve farklı formatlara (PNG, JPG, WEBP) dönüştürün.
-- 🔢 **Binary Dönüştürücü:** Metin ve Binary (ikilik sistem) arasında anında dönüşüm yapın.
-- 🔐 **Şifre Oluşturucu:** Güvenli, özelleştirilebilir ve kırılması zor şifreler üretin.
-- 📻 **Mors Dönüştürücü:** Metinleri Mors alfabesine çevirin ve sesli olarak dinleyin.
-- 🎨 **Renk Gezgini:** HSV tabanlı renk seçici ile mükemmel renk paletleri ve armonileri oluşturun.
-- 🌐 **Favicon Oluşturucu:** Logonuzu tüm cihazlar için profesyonel bir favicon paketine dönüştürün.
-- 📦 **JSON Model Dönüştürücü:** JSON verilerini TypeScript, Go veya Java sınıflarına dönüştürün.
-- ⌨️ **ASCII Sanatı Oluşturucu:** Metin ve görsellerinizi nostaljik ASCII karakterlerine dönüştürün.
-
->>>>>>> c4d8f4427aa3278ee3fbfc9d387b95d04a7da7fb
 ---
 
 ## 🚀 Teknolojiler
