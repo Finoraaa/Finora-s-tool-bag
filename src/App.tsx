@@ -10,6 +10,9 @@ import ColorTool from './pages/ColorTool';
 import FaviconTool from './pages/FaviconTool';
 import JsonConverterTool from './pages/JsonConverterTool';
 import AsciiArtTool from './pages/AsciiArtTool';
+import QrCodeTool from './pages/QrCodeTool';
+import PomodoroTool from './pages/PomodoroTool';
+import WordCounterTool from './pages/WordCounterTool';
 import Tools from './pages/Tools';
 
 export default function App() {
@@ -29,6 +32,9 @@ export default function App() {
             <Route path="/tools/favicon" element={<FaviconTool />} />
             <Route path="/tools/json-converter" element={<JsonConverterTool />} />
             <Route path="/tools/ascii-art" element={<AsciiArtTool />} />
+            <Route path="/tools/qr-code" element={<QrCodeTool />} />
+            <Route path="/tools/pomodoro" element={<PomodoroTool />} />
+            <Route path="/tools/word-counter" element={<WordCounterTool />} />
             <Route path="/tools" element={<Tools />} />
           </Routes>
         </main>

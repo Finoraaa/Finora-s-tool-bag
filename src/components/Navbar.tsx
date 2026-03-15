@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces } from 'lucide-react';
+import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces, QrCode, Timer, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { clsx, type ClassValue } from 'clsx';
@@ -30,6 +30,9 @@ export default function Navbar() {
     { name: t('nav.favicon_generator'), path: '/tools/favicon', icon: <Layout className="w-4 h-4" /> },
     { name: t('nav.json_converter'), path: '/tools/json-converter', icon: <Braces className="w-4 h-4" /> },
     { name: t('nav.ascii_art'), path: '/tools/ascii-art', icon: <Terminal className="w-4 h-4" /> },
+    { name: t('nav.qr_code'), path: '/tools/qr-code', icon: <QrCode className="w-4 h-4" /> },
+    { name: t('nav.pomodoro'), path: '/tools/pomodoro', icon: <Timer className="w-4 h-4" /> },
+    { name: t('nav.word_counter'), path: '/tools/word-counter', icon: <FileText className="w-4 h-4" /> },
   ];
 
   return (

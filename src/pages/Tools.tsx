@@ -10,7 +10,10 @@ import {
   Braces, 
   Terminal,
   ChevronRight,
-  Zap
+  Zap,
+  QrCode,
+  Timer,
+  FileText
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -74,6 +77,27 @@ export default function Tools() {
       icon: <Terminal className="w-6 h-6" />,
       desc: t('ascii.desc'),
       color: 'from-green-500/20 to-emerald-500/20'
+    },
+    { 
+      name: t('nav.qr_code'), 
+      path: '/tools/qr-code', 
+      icon: <QrCode className="w-6 h-6" />,
+      desc: t('qr.desc'),
+      color: 'from-slate-500/20 to-zinc-500/20'
+    },
+    { 
+      name: t('nav.pomodoro'), 
+      path: '/tools/pomodoro', 
+      icon: <Timer className="w-6 h-6" />,
+      desc: t('pomodoro.desc'),
+      color: 'from-red-500/20 to-orange-500/20'
+    },
+    { 
+      name: t('nav.word_counter'), 
+      path: '/tools/word-counter', 
+      icon: <FileText className="w-6 h-6" />,
+      desc: t('wordcounter.desc'),
+      color: 'from-cyan-500/20 to-sky-500/20'
     },
   ];
 
