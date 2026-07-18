@@ -174,7 +174,7 @@ export default function LinkBagTool() {
   // Get share link
   const shareLink = useMemo(() => {
     const encoded = encodeState(profile);
-    return `${window.location.origin}/tools/linkbag#profile=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#profile=${encoded}`;
   }, [profile]);
 
   const handleCopyLink = () => {
