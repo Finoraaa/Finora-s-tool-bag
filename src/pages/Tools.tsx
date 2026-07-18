@@ -13,7 +13,10 @@ import {
   Zap,
   QrCode,
   Timer,
-  FileText
+  FileText,
+  Clock,
+  Link as LinkIcon,
+  Layers
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -98,6 +101,27 @@ export default function Tools() {
       icon: <FileText className="w-6 h-6" />,
       desc: t('wordcounter.desc'),
       color: 'from-cyan-500/20 to-sky-500/20'
+    },
+    { 
+      name: t('nav.unix_timestamp'), 
+      path: '/tools/unix-timestamp', 
+      icon: <Clock className="w-6 h-6" />,
+      desc: t('unix.desc'),
+      color: 'from-blue-500/20 to-indigo-500/20'
+    },
+    { 
+      name: t('nav.url_shortener'), 
+      path: '/tools/url-shortener', 
+      icon: <LinkIcon className="w-6 h-6" />,
+      desc: t('url.desc'),
+      color: 'from-teal-500/20 to-emerald-500/20'
+    },
+    { 
+      name: t('nav.linkbag'), 
+      path: '/tools/linkbag', 
+      icon: <Layers className="w-6 h-6" />,
+      desc: t('linkbag.desc'),
+      color: 'from-fuchsia-500/20 to-purple-500/20'
     },
   ];
 

@@ -13,6 +13,9 @@ import AsciiArtTool from './pages/AsciiArtTool';
 import QrCodeTool from './pages/QrCodeTool';
 import PomodoroTool from './pages/PomodoroTool';
 import WordCounterTool from './pages/WordCounterTool';
+import UnixTimestampTool from './pages/UnixTimestampTool';
+import UrlShortenerTool from './pages/UrlShortenerTool';
+import LinkBagTool from './pages/LinkBagTool';
 import Tools from './pages/Tools';
 
 export default function App() {
@@ -35,6 +38,9 @@ export default function App() {
             <Route path="/tools/qr-code" element={<QrCodeTool />} />
             <Route path="/tools/pomodoro" element={<PomodoroTool />} />
             <Route path="/tools/word-counter" element={<WordCounterTool />} />
+            <Route path="/tools/unix-timestamp" element={<UnixTimestampTool />} />
+            <Route path="/tools/url-shortener" element={<UrlShortenerTool />} />
+            <Route path="/tools/linkbag" element={<LinkBagTool />} />
             <Route path="/tools" element={<Tools />} />
           </Routes>
         </main>
