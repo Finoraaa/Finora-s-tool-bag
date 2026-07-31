@@ -16,7 +16,8 @@ import {
   FileText,
   Clock,
   Link as LinkIcon,
-  Layers
+  Layers,
+  ShieldCheck
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -25,6 +26,13 @@ export default function Tools() {
   const { t } = useLanguage();
 
   const tools = [
+    { 
+      name: t('nav.cipher'), 
+      path: '/tools/cipher', 
+      icon: <ShieldCheck className="w-6 h-6" />,
+      desc: t('cipher.desc'),
+      color: 'from-violet-500/20 to-indigo-500/20'
+    },
     { 
       name: t('nav.image_analysis'), 
       path: '/tools/image-analysis', 

@@ -16,6 +16,7 @@ import WordCounterTool from './pages/WordCounterTool';
 import UnixTimestampTool from './pages/UnixTimestampTool';
 import UrlShortenerTool from './pages/UrlShortenerTool';
 import LinkBagTool from './pages/LinkBagTool';
+import CipherTool from './pages/CipherTool';
 import Tools from './pages/Tools';
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/tools/unix-timestamp" element={<UnixTimestampTool />} />
             <Route path="/tools/url-shortener" element={<UrlShortenerTool />} />
             <Route path="/tools/linkbag" element={<LinkBagTool />} />
+            <Route path="/tools/cipher" element={<CipherTool />} />
             <Route path="/tools" element={<Tools />} />
           </Routes>
         </main>
