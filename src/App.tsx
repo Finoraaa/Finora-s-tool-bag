@@ -17,6 +17,7 @@ import UnixTimestampTool from './pages/UnixTimestampTool';
 import UrlShortenerTool from './pages/UrlShortenerTool';
 import LinkBagTool from './pages/LinkBagTool';
 import CipherTool from './pages/CipherTool';
+import FileShareTool from './pages/FileShareTool';
 import Tools from './pages/Tools';
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/tools/file-share" element={<FileShareTool />} />
             <Route path="/tools/image-analysis" element={<ImageTool />} />
             <Route path="/tools/binary" element={<BinaryTool />} />
             <Route path="/tools/password" element={<PasswordTool />} />

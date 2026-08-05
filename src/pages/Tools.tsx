@@ -17,7 +17,8 @@ import {
   Clock,
   Link as LinkIcon,
   Layers,
-  ShieldCheck
+  ShieldCheck,
+  UploadCloud
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -26,6 +27,13 @@ export default function Tools() {
   const { t } = useLanguage();
 
   const tools = [
+    { 
+      name: t('nav.file_share'), 
+      path: '/tools/file-share', 
+      icon: <UploadCloud className="w-6 h-6" />,
+      desc: t('fileshare.desc'),
+      color: 'from-cyan-500/20 to-blue-500/20'
+    },
     { 
       name: t('nav.cipher'), 
       path: '/tools/cipher', 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces, QrCode, Timer, FileText, ShieldCheck } from 'lucide-react';
+import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces, QrCode, Timer, FileText, ShieldCheck, UploadCloud } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { clsx, type ClassValue } from 'clsx';
@@ -22,6 +22,7 @@ export default function Navbar() {
   ];
 
   const tools = [
+    { name: t('nav.file_share'), path: '/tools/file-share', icon: <UploadCloud className="w-4 h-4" /> },
     { name: t('nav.cipher'), path: '/tools/cipher', icon: <ShieldCheck className="w-4 h-4" /> },
     { name: t('nav.image_analysis'), path: '/tools/image-analysis', icon: <ImageIcon className="w-4 h-4" /> },
     { name: t('nav.binary_converter'), path: '/tools/binary', icon: <Binary className="w-4 h-4" /> },
