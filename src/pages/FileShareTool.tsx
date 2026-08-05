@@ -105,6 +105,65 @@ async function decryptData(cipherTextBase64: string, password: string, saltHex: 
   return dec.decode(decryptedBuf);
 }
 
+// Upload helper with fallback chain (Pixeldrain -> File.io -> Tmpfiles)
+async function uploadToFreeCloudHost(blob: Blob, fileName: string): Promise<string | undefined> {
+  // Try 1: Pixeldrain API (Full CORS support, fast streaming & downloads)
+  try {
+    const formData = new FormData();
+    formData.append('file', blob, fileName);
+    const res = await fetch('https://pixeldrain.com/api/file', {
+      method: 'POST',
+      body: formData
+    });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.id) {
+        return `https://pixeldrain.com/api/file/${json.id}`;
+      }
+    }
+  } catch (e) {
+    console.warn('Pixeldrain upload failed', e);
+  }
+
+  // Try 2: File.io API (Supports CORS)
+  try {
+    const formData = new FormData();
+    formData.append('file', blob, fileName);
+    const res = await fetch('https://file.io', {
+      method: 'POST',
+      body: formData
+    });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.link) {
+        return json.link;
+      }
+    }
+  } catch (e) {
+    console.warn('File.io upload failed', e);
+  }
+
+  // Try 3: Tmpfiles.org API
+  try {
+    const formData = new FormData();
+    formData.append('file', blob, fileName);
+    const res = await fetch('https://tmpfiles.org/api/v1/upload', {
+      method: 'POST',
+      body: formData
+    });
+    if (res.ok) {
+      const json = await res.json();
+      if (json.data?.url) {
+        return json.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+      }
+    }
+  } catch (e) {
+    console.warn('Tmpfiles upload failed', e);
+  }
+
+  return undefined;
+}
+
 export default function FileShareTool() {
   const { t } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -315,31 +374,11 @@ export default function FileShareTool() {
 
       setUploadProgress('Geçici Bulut Sunucusuna Yükleniyor...');
 
-      let remoteDlUrl: string | undefined = undefined;
-      try {
-        // Create Blob to upload to tmpfiles.org public free host
-        const blob = isEncrypted
-          ? new Blob([finalDataUrl], { type: 'text/plain' })
-          : selectedFile;
+      const uploadBlob = isEncrypted
+        ? new Blob([finalDataUrl], { type: 'text/plain' })
+        : selectedFile;
 
-        const formData = new FormData();
-        formData.append('file', blob, selectedFile.name);
-
-        const res = await fetch('https://tmpfiles.org/api/v1/upload', {
-          method: 'POST',
-          body: formData
-        });
-
-        if (res.ok) {
-          const json = await res.json();
-          if (json.data?.url) {
-            // Convert view URL to direct download URL (tmpfiles.org/dl/123/name)
-            remoteDlUrl = json.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
-          }
-        }
-      } catch (cloudErr) {
-        console.warn('Temp cloud upload failed, using client storage fallback', cloudErr);
-      }
+      const remoteDlUrl = await uploadToFreeCloudHost(uploadBlob, selectedFile.name);
 
       // Calculate expiration timestamp
       let expiresAt: number | null = null;
