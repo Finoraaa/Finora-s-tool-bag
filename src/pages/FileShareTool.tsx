@@ -132,6 +132,50 @@ export default function FileShareTool() {
   const [decryptError, setDecryptError] = useState(false);
   const [decryptedFileContent, setDecryptedFileContent] = useState<string | null>(null);
 
+  // Blob URL for smooth local media streaming
+  const [blobPreviewUrl, setBlobPreviewUrl] = useState<string | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [previewError, setPreviewError] = useState(false);
+
+  // Fetch remote media as Blob objectURL for seamless HTML5 <video> & <img> rendering
+  useEffect(() => {
+    if (!decryptedFileContent) {
+      setBlobPreviewUrl(null);
+      setPreviewError(false);
+      return;
+    }
+
+    if (decryptedFileContent.startsWith('data:') || decryptedFileContent.startsWith('blob:')) {
+      setBlobPreviewUrl(decryptedFileContent);
+      setPreviewError(false);
+      return;
+    }
+
+    if (decryptedFileContent.startsWith('http://') || decryptedFileContent.startsWith('https://')) {
+      setPreviewLoading(true);
+      setPreviewError(false);
+
+      fetch(decryptedFileContent)
+        .then(res => {
+          if (!res.ok) throw new Error('Fetch preview failed');
+          return res.blob();
+        })
+        .then(blob => {
+          const objectUrl = URL.createObjectURL(blob);
+          setBlobPreviewUrl(objectUrl);
+        })
+        .catch(err => {
+          console.warn('Failed to fetch preview blob', err);
+          setBlobPreviewUrl(decryptedFileContent);
+        })
+        .finally(() => {
+          setPreviewLoading(false);
+        });
+    } else {
+      setBlobPreviewUrl(decryptedFileContent);
+    }
+  }, [decryptedFileContent]);
+
   // History State
   const [history, setHistory] = useState<StoredFileItem[]>([]);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -567,13 +611,24 @@ export default function FileShareTool() {
                         <Eye className="w-4 h-4 text-finora-accent" />
                         {t('fileshare.preview_title')}
                       </span>
-                      <div className="p-6 bg-neutral-950 rounded-2xl border border-finora-border max-h-80 overflow-auto flex items-center justify-center">
-                        {activeFile.type.startsWith('image/') ? (
-                          <img src={decryptedFileContent} alt={activeFile.name} className="max-h-72 object-contain rounded-xl" />
+                      <div className="p-6 bg-neutral-950 rounded-2xl border border-finora-border max-h-96 overflow-auto flex items-center justify-center">
+                        {previewLoading ? (
+                          <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 py-8">
+                            <RefreshCw className="w-4 h-4 animate-spin text-finora-accent" />
+                            <span>Önizleme Yükleniyor...</span>
+                          </div>
+                        ) : previewError ? (
+                          <div className="text-center py-6 text-xs font-mono text-neutral-400 space-y-2">
+                            <Info className="w-6 h-6 text-amber-400 mx-auto" />
+                            <p>Bu medyanın önizlemesi doğrudan oynatılamadı.</p>
+                            <p className="text-[10px] text-neutral-500">Videoyu izlemek veya kaydetmek için yukarıdaki <b>DOSYAYI İNDİR</b> butonunu kullanabilirsiniz.</p>
+                          </div>
+                        ) : activeFile.type.startsWith('image/') ? (
+                          <img src={blobPreviewUrl || decryptedFileContent} alt={activeFile.name} className="max-h-80 object-contain rounded-xl" />
                         ) : activeFile.type.startsWith('audio/') ? (
-                          <audio controls src={decryptedFileContent} className="w-full" />
+                          <audio controls src={blobPreviewUrl || decryptedFileContent} className="w-full" />
                         ) : activeFile.type.startsWith('video/') ? (
-                          <video controls src={decryptedFileContent} className="max-h-72 w-full rounded-xl" />
+                          <video controls playsInline src={blobPreviewUrl || decryptedFileContent} className="max-h-80 w-full rounded-xl" />
                         ) : (
                           <pre className="text-xs font-mono text-neutral-300 break-all whitespace-pre-wrap max-h-64">
                             {decryptedFileContent.slice(0, 2000)}...
