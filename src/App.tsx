@@ -18,6 +18,12 @@ import UrlShortenerTool from './pages/UrlShortenerTool';
 import LinkBagTool from './pages/LinkBagTool';
 import CipherTool from './pages/CipherTool';
 import FileShareTool from './pages/FileShareTool';
+import AudioVisualizerTool from './pages/AudioVisualizerTool';
+import DecisionMakerTool from './pages/DecisionMakerTool';
+import TypingTestTool from './pages/TypingTestTool';
+import AtmosphereMixerTool from './pages/AtmosphereMixerTool';
+import PixelArtTool from './pages/PixelArtTool';
+import ReactionTestTool from './pages/ReactionTestTool';
 import Tools from './pages/Tools';
 
 export default function App() {
@@ -29,6 +35,12 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/tools/typing-test" element={<TypingTestTool />} />
+            <Route path="/tools/atmosphere-mixer" element={<AtmosphereMixerTool />} />
+            <Route path="/tools/pixel-art" element={<PixelArtTool />} />
+            <Route path="/tools/reaction-test" element={<ReactionTestTool />} />
+            <Route path="/tools/audio-visualizer" element={<AudioVisualizerTool />} />
+            <Route path="/tools/decision-maker" element={<DecisionMakerTool />} />
             <Route path="/tools/file-share" element={<FileShareTool />} />
             <Route path="/tools/image-analysis" element={<ImageTool />} />
             <Route path="/tools/binary" element={<BinaryTool />} />

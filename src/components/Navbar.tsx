@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces, QrCode, Timer, FileText, ShieldCheck, UploadCloud } from 'lucide-react';
+import { Zap, Menu, X, ChevronDown, Image as ImageIcon, Terminal, Binary, Lock, Radio, Palette, Languages, CheckCircle2, Layout, Braces, QrCode, Timer, FileText, ShieldCheck, UploadCloud, Activity, Disc, Keyboard, CloudRain, Grid, Gauge } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { clsx, type ClassValue } from 'clsx';
@@ -22,6 +22,12 @@ export default function Navbar() {
   ];
 
   const tools = [
+    { name: t('nav.typing_test'), path: '/tools/typing-test', icon: <Keyboard className="w-4 h-4" /> },
+    { name: t('nav.atmosphere_mixer'), path: '/tools/atmosphere-mixer', icon: <CloudRain className="w-4 h-4" /> },
+    { name: t('nav.pixel_art'), path: '/tools/pixel-art', icon: <Grid className="w-4 h-4" /> },
+    { name: t('nav.reaction_test'), path: '/tools/reaction-test', icon: <Gauge className="w-4 h-4" /> },
+    { name: t('nav.audio_visualizer'), path: '/tools/audio-visualizer', icon: <Activity className="w-4 h-4" /> },
+    { name: t('nav.decision_maker'), path: '/tools/decision-maker', icon: <Disc className="w-4 h-4" /> },
     { name: t('nav.file_share'), path: '/tools/file-share', icon: <UploadCloud className="w-4 h-4" /> },
     { name: t('nav.cipher'), path: '/tools/cipher', icon: <ShieldCheck className="w-4 h-4" /> },
     { name: t('nav.image_analysis'), path: '/tools/image-analysis', icon: <ImageIcon className="w-4 h-4" /> },

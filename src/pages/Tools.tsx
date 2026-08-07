@@ -18,7 +18,13 @@ import {
   Link as LinkIcon,
   Layers,
   ShieldCheck,
-  UploadCloud
+  UploadCloud,
+  Activity,
+  Disc,
+  Keyboard,
+  CloudRain,
+  Grid,
+  Gauge
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -27,6 +33,48 @@ export default function Tools() {
   const { t } = useLanguage();
 
   const tools = [
+    { 
+      name: t('nav.typing_test'), 
+      path: '/tools/typing-test', 
+      icon: <Keyboard className="w-6 h-6" />,
+      desc: t('typing.desc'),
+      color: 'from-emerald-500/20 to-teal-500/20'
+    },
+    { 
+      name: t('nav.atmosphere_mixer'), 
+      path: '/tools/atmosphere-mixer', 
+      icon: <CloudRain className="w-6 h-6" />,
+      desc: t('atmosphere.desc'),
+      color: 'from-blue-500/20 to-indigo-500/20'
+    },
+    { 
+      name: t('nav.pixel_art'), 
+      path: '/tools/pixel-art', 
+      icon: <Grid className="w-6 h-6" />,
+      desc: t('pixel.desc'),
+      color: 'from-fuchsia-500/20 to-pink-500/20'
+    },
+    { 
+      name: t('nav.reaction_test'), 
+      path: '/tools/reaction-test', 
+      icon: <Gauge className="w-6 h-6" />,
+      desc: t('reaction.desc'),
+      color: 'from-rose-500/20 to-red-500/20'
+    },
+    { 
+      name: t('nav.audio_visualizer'), 
+      path: '/tools/audio-visualizer', 
+      icon: <Activity className="w-6 h-6" />,
+      desc: t('audio.desc'),
+      color: 'from-pink-500/20 to-rose-500/20'
+    },
+    { 
+      name: t('nav.decision_maker'), 
+      path: '/tools/decision-maker', 
+      icon: <Disc className="w-6 h-6" />,
+      desc: t('decision.desc'),
+      color: 'from-amber-500/20 to-orange-500/20'
+    },
     { 
       name: t('nav.file_share'), 
       path: '/tools/file-share', 
